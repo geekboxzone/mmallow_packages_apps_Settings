@@ -134,6 +134,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.android.settings.ScreenshotSetting;
+import android.os.SystemProperties;
+
 public class SettingsActivity extends Activity
         implements PreferenceManager.OnPreferenceTreeClickListener,
         PreferenceFragment.OnPreferenceStartFragmentCallback,
@@ -278,7 +281,8 @@ public class SettingsActivity extends Activity
             R.id.print_settings,
             R.id.nfc_payment_settings,
             R.id.home_settings,
-            R.id.dashboard
+            R.id.dashboard,
+            R.id.screenshot_settings
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -354,6 +358,7 @@ public class SettingsActivity extends Activity
             ProcessStatsSummary.class.getName(),
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
+            ScreenshotSetting.class.getName()
     };
 
 
@@ -1299,6 +1304,10 @@ public class SettingsActivity extends Activity
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
                         removeTile = true;
                     }
+                } else if(id ==R.id.screenshot_settings){
+                     if (SystemProperties.get("ro.rk.screenshot_enable", "true").equals("false")){
+                        removeTile = true;
+                     }
                 }
 
                 if (UserHandle.MU_ENABLED && UserHandle.myUserId() != 0

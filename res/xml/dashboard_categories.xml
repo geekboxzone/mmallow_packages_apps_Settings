@@ -157,6 +157,11 @@
             <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
         </dashboard-tile>
 
+        <dashboard-tile
+            android:id="@+id/screenshot_settings"
+            android:title="@string/screenshot_manager"
+            android:fragment="com.android.settings.ScreenshotSetting"
+            android:icon="@drawable/capture" />
     </dashboard-category>
 
     <!-- PERSONAL -->

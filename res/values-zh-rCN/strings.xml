@@ -2868,4 +2868,14 @@
     <string name="write_settings_description" msgid="6868293938839954623">"此权限允许应用修改系统设置。"</string>
     <string name="write_settings_on" msgid="8230580416068832239">"允许"</string>
     <string name="write_settings_off" msgid="5156104383386336233">"不允许"</string>
+	<string name="sysbar_volume_title">导航栏音量按钮</string>
+	<string name="sysbar_volume_summary">在导航栏上显示/隐藏音量按钮</string>
+    <!-- screenshot -->
+    <string name="app_name">截屏管理器</string>
+    <string name="screenshot_manager">截屏设置</string>
+    <string name="screenshot_delay_title">延时截屏设置 </string>
+    <string name="screenshot_show">在状态栏上显示截屏按钮</string>
+    <string name="screenshot_version">截屏管理器版本</string>
+    <string name="screenshot_storage_title">设置截屏图片存储位置</string>
+    <string name="later">秒以后截屏</string>
 </resources>
