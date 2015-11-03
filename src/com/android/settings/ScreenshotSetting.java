@@ -96,11 +96,14 @@ public class ScreenshotSetting extends SettingsPreferenceFragment implements OnP
             //mEdit.putString("storageLocation",value);
             if(value.equals("flash")) {
                 String sdcard_path = Environment.getExternalStorageDirectory().toString();
-                Settings.System.putString(getContentResolver(), Settings.System.SCREENSHOT_LOCATION, sdcard_path);
+                Settings.System.putString(getContentResolver(), Settings.System.SCREENSHOT_LOCATION,
+                        Settings.System.SCREENSHOT_LOCATION_INTERNAL_SD);
             } else if(value.equals("sdcard")) {
-                Settings.System.putString(getContentResolver(), Settings.System.SCREENSHOT_LOCATION, "/mnt/external_sd");
+                Settings.System.putString(getContentResolver(), Settings.System.SCREENSHOT_LOCATION,
+                        Settings.System.SCREENSHOT_LOCATION_EXTERNAL_SD);
             } else if(value.equals("usb")) {
-                Settings.System.putString(getContentResolver(), Settings.System.SCREENSHOT_LOCATION, "/mnt/usb_storage");
+                Settings.System.putString(getContentResolver(), Settings.System.SCREENSHOT_LOCATION,
+                        Settings.System.SCREENSHOT_LOCATION_USB);
             }
             mStorage.setSummary(value);
         }
