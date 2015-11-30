@@ -103,7 +103,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
 
     private static final StateTracker sWifiState = new WifiStateTracker();
     private static final StateTracker sBluetoothState = new BluetoothStateTracker();
-    private static final StateTracker sLocationState = new LocationStateTracker();
+    //private static final StateTracker sLocationState = new LocationStateTracker();
     private static final StateTracker sSyncState = new SyncStateTracker();
     private static SettingsObserver sSettingsObserver;
 
@@ -509,6 +509,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     /**
      * Subclass of StateTracker for location state.
      */
+    /*
     private static final class LocationStateTracker extends StateTracker {
         private int mCurrentLocationMode = Settings.Secure.LOCATION_MODE_OFF;
 
@@ -589,6 +590,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             }.execute();
         }
     }
+    */
 
     /**
      * Subclass of StateTracker for sync state.
@@ -689,14 +691,14 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                 R.layout.widget);
         views.setOnClickPendingIntent(R.id.btn_wifi, getLaunchPendingIntent(context,
                 BUTTON_WIFI));
-        views.setOnClickPendingIntent(R.id.btn_brightness,
-                getLaunchPendingIntent(context,
-                        BUTTON_BRIGHTNESS));
+        //views.setOnClickPendingIntent(R.id.btn_brightness,
+                //getLaunchPendingIntent(context,
+                        //BUTTON_BRIGHTNESS));
         views.setOnClickPendingIntent(R.id.btn_sync,
                 getLaunchPendingIntent(context,
                         BUTTON_SYNC));
-        views.setOnClickPendingIntent(R.id.btn_location,
-                getLaunchPendingIntent(context, BUTTON_LOCATION));
+        //views.setOnClickPendingIntent(R.id.btn_location,
+                //getLaunchPendingIntent(context, BUTTON_LOCATION));
         views.setOnClickPendingIntent(R.id.btn_bluetooth,
                 getLaunchPendingIntent(context,
                         BUTTON_BLUETOOTH));
@@ -727,9 +729,10 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
     private static void updateButtons(RemoteViews views, Context context) {
         sWifiState.setImageViewResources(context, views);
         sBluetoothState.setImageViewResources(context, views);
-        sLocationState.setImageViewResources(context, views);
+        //sLocationState.setImageViewResources(context, views);
         sSyncState.setImageViewResources(context, views);
 
+        /*
         if (getBrightnessMode(context)) {
             views.setContentDescription(R.id.btn_brightness,
                     context.getString(R.string.gadget_brightness_template,
@@ -774,6 +777,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
                         R.drawable.appwidget_settings_ind_off_r_holo);
             }
         }
+        */
     }
 
     /**
@@ -807,8 +811,8 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             sWifiState.onActualStateChange(context, intent);
         } else if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
             sBluetoothState.onActualStateChange(context, intent);
-        } else if (LocationManager.MODE_CHANGED_ACTION.equals(action)) {
-            sLocationState.onActualStateChange(context, intent);
+        //} else if (LocationManager.MODE_CHANGED_ACTION.equals(action)) {
+            //sLocationState.onActualStateChange(context, intent);
         } else if (ContentResolver.ACTION_SYNC_CONN_STATUS_CHANGED.equals(action)) {
             sSyncState.onActualStateChange(context, intent);
         } else if (intent.hasCategory(Intent.CATEGORY_ALTERNATIVE)) {
@@ -816,12 +820,12 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             int buttonId = Integer.parseInt(data.getSchemeSpecificPart());
             if (buttonId == BUTTON_WIFI) {
                 sWifiState.toggleState(context);
-            } else if (buttonId == BUTTON_BRIGHTNESS) {
-                toggleBrightness(context);
+            //} else if (buttonId == BUTTON_BRIGHTNESS) {
+                //toggleBrightness(context);
             } else if (buttonId == BUTTON_SYNC) {
                 sSyncState.toggleState(context);
-            } else if (buttonId == BUTTON_LOCATION) {
-                sLocationState.toggleState(context);
+            //} else if (buttonId == BUTTON_LOCATION) {
+                //sLocationState.toggleState(context);
             } else if (buttonId == BUTTON_BLUETOOTH) {
                 sBluetoothState.toggleState(context);
             }

@@ -87,6 +87,7 @@
 
     </LinearLayout>
 
+    <!--
     <ImageView
         android:layout_width="1dip"
         android:layout_height="match_parent"
@@ -122,6 +123,7 @@
             android:contentDescription="@null"
             />
     </LinearLayout>
+    -->
 
     <ImageView
         android:layout_width="1dip"
@@ -159,6 +161,7 @@
             />
     </LinearLayout>
 
+    <!--
     <ImageView
         android:layout_width="1dip"
         android:layout_height="match_parent"
@@ -194,5 +197,6 @@
             android:contentDescription="@null"
             />
     </LinearLayout>
+    -->
 
 </LinearLayout>
