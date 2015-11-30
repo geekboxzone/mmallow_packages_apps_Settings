@@ -47,12 +47,12 @@
                 android:icon="@drawable/ic_settings_sim"
                 />
 
-        <!-- Data Usage -->
+        <!-- Ethernet -->
         <dashboard-tile
-                android:id="@+id/data_usage_settings"
-                android:title="@string/data_usage_summary_title"
-                android:fragment="com.android.settings.DataUsageSummary"
-                android:icon="@drawable/ic_settings_data_usage"
+                android:id="@+id/ethernet_settings"
+                android:title="@string/ethernet_settings_title"
+                android:fragment="com.android.settings.EthernetSettings"
+                android:icon="@drawable/ic_settings_ethernet"
                 />
 
         <!-- Operator hook -->

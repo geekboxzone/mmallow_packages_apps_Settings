@@ -262,7 +262,7 @@ public class SettingsActivity extends Activity
             R.id.wireless_section,
             R.id.wifi_settings,
             R.id.bluetooth_settings,
-            R.id.data_usage_settings,
+            R.id.ethernet_settings,
             R.id.sim_settings,
             R.id.wireless_settings,
             R.id.device_section,
@@ -1262,7 +1262,7 @@ public class SettingsActivity extends Activity
                     if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)||(SystemProperties.get("ro.rk.bt_enable", "true").equals("false"))) {
                         removeTile = true;
                     }
-                } else if (id == R.id.data_usage_settings) {
+                } else if (id == R.id.ethernet_settings) {
                     // Remove data usage when kernel module not enabled
                     if (!Utils.isBandwidthControlEnabled()) {
                         removeTile = true;
