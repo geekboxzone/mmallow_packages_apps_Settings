@@ -166,6 +166,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
          */
         final Activity act = getActivity();
 
+        getPreferenceScreen().removePreference(findPreference(KEY_BASEBAND_VERSION));
         // These are contained by the root preference screen
         PreferenceGroup parentPreference = getPreferenceScreen();
         if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
