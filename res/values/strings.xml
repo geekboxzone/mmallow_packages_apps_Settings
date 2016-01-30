@@ -7012,7 +7012,7 @@
 
     <!--screenshot setting -->
     <string name="app_name">ScreenshotManager</string>
-    <string name="screenshot_manager">ScreenshotSetting</string>
+    <string name="screenshot_manager">Screenshot</string>
     <string name="screenshot_delay_title">Select delay time to capture the screen </string>
     <string name="screenshot_show">Show the screenshot button in the statusbar</string>
     <string name="screenshot_version">Show the version of screenshot manager.</string>
