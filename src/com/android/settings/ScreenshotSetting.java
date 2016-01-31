@@ -68,6 +68,9 @@ public class ScreenshotSetting extends SettingsPreferenceFragment implements OnP
         mSharedPreference = this.getPreferenceScreen().getSharedPreferences();
         mEdit = mSharedPreference.edit();
 
+        int isShow = Settings.System.getInt(getContentResolver(), Settings.System.SCREENSHOT_BUTTON_SHOW, 1);
+        mShow.setChecked(isShow != 0);
+
         String summary_delay =mDelay.getSharedPreferences().getString("screenshot_delay", "15");
         mDelay.setSummary(summary_delay+getString(R.string.later));
         mDelay.setValue(summary_delay);
