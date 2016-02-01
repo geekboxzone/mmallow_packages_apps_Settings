@@ -290,13 +290,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                         best = i;
                     }
                 }
-                if(currentTimeout>1800000){
-                     summary = preference.getContext().getString(R.string.screen_never_timeout_summary,
-                                                       entries[best]);
-                 }else{
-                     summary = preference.getContext().getString(R.string.screen_timeout_summary,
-                                                       entries[best]);
-                 }
+                if (best+1 == values.length) {
+                    summary = preference.getContext().getString(R.string.screen_never_timeout_summary,
+                            entries[best]);
+                } else {
+                    summary = preference.getContext().getString(R.string.screen_timeout_summary,
+                            entries[best]);
+                }
             }
         }
         preference.setSummary(summary);
