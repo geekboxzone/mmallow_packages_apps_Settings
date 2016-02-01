@@ -2014,6 +2014,7 @@
     <string name="screen_timeout_title">Screen turns off</string>
     <!-- Sound & display settings screen, setting option summary to change screen timeout -->
     <string name="screen_timeout_summary">After <xliff:g id="timeout_description">%1$s</xliff:g> of inactivity</string>
+    <string name="screen_never_timeout_summary">Never</string>
     <!-- Wallpaper settings title [CHAR LIMIT=30] -->
     <string name="wallpaper_settings_title">Wallpaper</string>
     <!-- Wallpaper settings fragment title [CHAR LIMIT=30] -->
