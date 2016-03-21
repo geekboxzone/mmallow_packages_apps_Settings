@@ -125,6 +125,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.HdmiSettings;
+import com.android.settings.ScreenshotSetting;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -134,6 +135,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import android.os.SystemProperties;
 
 import com.android.settings.ScreenshotSetting;
 import android.os.SystemProperties;
@@ -1257,7 +1259,7 @@ public class SettingsActivity extends Activity
                     }
                 } else if (id == R.id.bluetooth_settings) {
                     // Remove Bluetooth Settings if Bluetooth service is not available.
-                    if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
+                    if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)||(SystemProperties.get("ro.rk.bt_enable", "true").equals("false"))) {
                         removeTile = true;
                     }
                 } else if (id == R.id.data_usage_settings) {
@@ -1307,8 +1309,12 @@ public class SettingsActivity extends Activity
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
                         removeTile = true;
                     }
-                } else if(id ==R.id.screenshot_settings){
-                     if (SystemProperties.get("ro.rk.screenshot_enable", "true").equals("false")){
+                }else if(id ==R.id.hdmi_settings){ 
+                    if (SystemProperties.get("ro.rk.hdmi_enable", "true").equals("false")){ 
+                        removeTile = true; 
+                    }
+		}else if(id ==R.id.screenshot_settings){
+                    if (SystemProperties.get("ro.rk.screenshot_enable", "true").equals("false")){
                         removeTile = true;
                      }
                 }
