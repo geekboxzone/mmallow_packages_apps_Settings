@@ -47,6 +47,11 @@
         android:title="@string/tether_settings_title_all" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.EthernetSettings"
+        android:key="ethernet_settings"
+        android:title="@string/ethernet_settings_title" />
+
+    <PreferenceScreen
         android:fragment="com.android.settings.vpn2.VpnSettings"
         android:key="vpn_settings"
         android:title="@string/vpn_settings_title" />
