@@ -7119,5 +7119,77 @@
      <string name="ethernet_quick_toggle_summary_on">Ethernet is enabled</string>
      <!--Used as title on second screen after selecting Ethernet settings -->
      <string name="ethernet_mode_title">Ethernet Ip mode</string>
-     <string name="ethernet_info_getting">"getting IP info..."</string>    
+     <string name="ethernet_info_getting">"getting IP info..."</string>
+
+     <string name="pppoe_settings_title">PPPoE</string>
+     <string name="pppoe_connect">Connect</string>
+     <string name="pppoe_add_account">PPPoE account</string>
+     <string name="pppoe_phy_iface">Physical interface</string>
+     <string name="pppoe_phy_iface_summary">Physical interface summary</string>
+     <string name="pppoe_phy_iface_dialog_title">Physical interface</string>
+ 
+     <string name="pppoe_controls">Pppoe controls</string>
+ 
+     <string name="pppoe">PPPoE</string>
+     <!-- Used in the 1st-level settings screen to turn on ethernet -->
+     <string name="pppoe_quick_toggle_title">PPPoE</string>
+ 
+ 
+     <!-- Used in the 1st-level settings screen as the turn-on summary -->
+     <string name="pppoe_quick_toggle_summary">Turn on PPPoE</string>
+ 
+     <string name="pppoe_connecting">PPPoE connecting...</string>
+     <string name="pppoe_connected">PPPoE connected</string>
+     <string name="pppoe_disconnecting">PPPoE disconnecting...</string>
+ 
+     <string name="pppoe">PPPoE</string>
+     <!-- Used in the 1st-level settings screen to turn on ethernet -->
+     <string name="pppoe_quick_toggle_title">PPPoE</string>
+ 
+ 
+     <!-- Used in the 1st-level settings screen as the turn-on summary -->
+     <string name="pppoe_quick_toggle_summary">Turn on PPPoE</string>
+ 
+     <string name="pppoe_connecting">PPPoE connecting...</string>
+     <string name="pppoe_connected">PPPoE connected</string>
+     <string name="pppoe_disconnecting">PPPoE disconnecting...</string>
+     <string name="pppoe_disconnected">PPPoE disconnected</string>
+ 
+     <!-- Used in the 1st-level settings screen to go to the 2nd-level settings screen -->
+     <string name="pppoe_settings">PPPoE settings</string>
+ 
+     <string name="pppoe_connect_eth_first">Please connect ethernet first</string>
+     <string name="pppoe_connect_wifi_first">Please connect WIFI first</string>
+     <string name="pppoe_invalid_account">Invalid account</string>
+     <string name="pppoe_settings_summary">Set up &amp; manage PPPoE connection</string>
+ 
+     <string name="hello">Hello World!</string>
+     <string name="pppoe_name">pppoe</string>
+     <string name="pppoe_accounts_settings">PPPoE accounts</string>
+     <string name="pppoe_accounts_settings_summary">PPPoE accounts manager</string>
+     <string name="pppoe_accounts_menu_new">New Accounts</string>
+     <string name="pppoe_accounts_menu_restore">Reset to Default</string>
+     <string name="pppoe_accounts_menu_delete">Delete Accounts</string>
+     <string name="pppoe_accounts_menu_save">Save Accounts</string>
+     <string name="pppoe_accounts_menu_cancel">Cancel</string>
+     <string name="pppoe_accounts_editor">pppoe accounts editor</string>
+     <string name="pppoe_accounts_name">name</string>
+     <string name="pppoe_accounts_user">user</string>
+     <string name="pppoe_accounts_dns1">dns1</string>
+     <string name="pppoe_accounts_dns2">dns2</string>
+     <string name="pppoe_accounts_password">password</string>
+     <string name="pppoe_accounts_edit">pppoe accounts editor</string>
+     <string name="pppoe_accounts_error_name_empty">name is empty</string>
+     <string name="pppoe_accounts_error_user_empty">user is empty</string>
+     <string name="pppoe_accounts_error_dns1_empty">dns1 is empty</string>
+     <string name="pppoe_accounts_error_password_empty">password is empty</string>
+     <string name="pppoe_accounts_error_title">Attention</string>
+     <string name="untitled_pppoe_account">Untitied</string>
+     <string name="restore_default_pppoe_accounts">Restore to default</string>
+     <string name="restore_default_pppoe_accounts_completed">Restore to default completed</string>
+     <string name="pppoe_accounts_not_set">(Not set)</string>
+     <string name="pppoe_add_new_pppoe">Add PPPoE Account</string>
+     <string name="pppoe_del_selected_pppoe">Del PPPoE Account</string>
+     <string name="pppoe_accounts">Accounts</string>
+     <string name="str_exit">Exit</string>    
 </resources>

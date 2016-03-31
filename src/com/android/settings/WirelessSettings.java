@@ -72,6 +72,8 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
     private static final String KEY_TOGGLE_NSD = "toggle_nsd"; //network service discovery
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
     private static final String KEY_WFC_SETTINGS = "wifi_calling_settings";
+    private static final String KEY_PPPOE_SETTINGS ="pppoe_settings";
+    private static final String KEY_ETHERNET_SETTINGS="ethernet_settings";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
@@ -320,6 +322,19 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         // proxy UI disabled until we have better app support
         getPreferenceScreen().removePreference(mGlobalProxy);
         mGlobalProxy.setEnabled(mDPM.getGlobalProxyAdmin() == null);
+
+        boolean isTablet = "box".equals(SystemProperties.get("ro.target.product", "tablet"));
+        String isCts = SystemProperties.get("net.pppoe.cts");
+        if(!isTablet || "true".equals(isCts)) {
+            Preference mPppoe = findPreference(KEY_PPPOE_SETTINGS);
+            getPreferenceScreen().removePreference(mPppoe);
+        }
+
+        /*boolean isTB = "unknown".equals(SystemProperties.get("ro.target.product", "unknown"));
+        if(isTB) {
+            Preference mEthernet = findPreference(KEY_ETHERNET_SETTINGS);
+            getPreferenceScreen().removePreference(mEthernet);
+        }*/
 
         // Disable Tethering if it's not allowed or if it's a wifi-only device
         final ConnectivityManager cm =

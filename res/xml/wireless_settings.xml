@@ -52,6 +52,12 @@
         android:title="@string/ethernet_settings_title" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.pppoe.PppoeSettings"
+        android:key="pppoe_settings"
+        android:title="@string/pppoe_settings_title"
+	android:persistent="false" />
+
+    <PreferenceScreen
         android:fragment="com.android.settings.vpn2.VpnSettings"
         android:key="vpn_settings"
         android:title="@string/vpn_settings_title" />

@@ -483,6 +483,42 @@
  
 	  <!--$_rbox_$_modify_$_end-->
 	 <!--$_rbox_$_modify_$_chenzhi_20120309-->
+<!--$_rbox_$_modify_$_begin-->
+      <!--  <activity android:name="com.android.settings.pppoe.PppoeAccountsSettings" -->
+
+        <activity android:name=".pppoe.PppoeAccountsSettings" 
+                android:label="@string/pppoe_accounts_settings"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:configChanges="orientation|keyboardHidden"
+                android:launchMode="singleTask">
+                <intent-filter>
+                        <action android:name="android.intent.action.MAIN" />
+                        <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+        </activity>
+
+
+     <!--  <activity android:name="com.android.settings.pppoe.PppoeAccountsEditor" -->
+        <activity android:name=".pppoe.PppoeAccountsEditor" 
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:label="@string/pppoe_accounts_edit">
+                <intent-filter>
+                        <action android:name="android.intent.action.VIEW" />
+                        <action android:name="android.intent.action.EDIT" />
+                        <category android:name="android.intent.category.DEFAULT" />
+                        <data android:mimeType="vnd.android.cursor.item/pppoe-accounts" />
+                </intent-filter>
+
+                <intent-filter>
+                        <action android:name="android.intent.action.INSERT" />
+                        <category android:name="android.intent.category.DEFAULT" />
+                        <data android:mimeType="vnd.android.cursor.dir/pppoe-accounts" />
+                </intent-filter>
+        </activity>
+
+        <provider android:name=".pppoe.PppoeAccountsContentProvider"
+                android:authorities="pppoe" />
+<!--$_rbox_$_modify_$_end-->
  
         <activity android:name="Settings$WifiP2pSettingsActivity"
                 android:taskAffinity="com.android.settings"

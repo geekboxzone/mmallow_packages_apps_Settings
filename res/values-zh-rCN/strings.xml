@@ -2979,4 +2979,76 @@
      <!--Used as title on second screen after selecting Ethernet settings -->
      <string name="ethernet_mode_title">以太网模式</string>
      <string name="ethernet_info_getting">"正在获取IP地址..."</string>
+
+     <string name="pppoe_settings_title">PPPoE拨号</string>
+     <string name="pppoe_connect">PPPoE拨号连接</string>
+     <string name="pppoe_add_account">PPPoE 账户</string>
+     <string name="pppoe_phy_iface">物理接口</string>
+     <string name="pppoe_phy_iface_summary">物理接口</string>
+     <string name="pppoe_phy_iface_dialog_title">物理接口</string>
+ 
+     <string name="pppoe_controls">Pppoe 控制</string>
+ 
+     <string name="pppoe">PPPoE</string>
+     <!-- Used in the 1st-level settings screen to turn on ethernet -->
+     <string name="pppoe_quick_toggle_title">PPPoE</string>
+ 
+ 
+     <!-- Used in the 1st-level settings screen as the turn-on summary -->
+     <string name="pppoe_quick_toggle_summary">打开PPPoE拨号</string>
+ 
+     <string name="pppoe_connecting">PPPoE 连接中...</string>
+     <string name="pppoe_connected">PPPoE 已连接</string>
+     <string name="pppoe_disconnecting">PPPoE 断开中...</string>
+     <string name="pppoe_disconnected">PPPoE 已断开</string>
+ 
+     <string name="pppoe_quick_toggle_title">PPPoE</string>
+ 
+ 
+     <!-- Used in the 1st-level settings screen as the turn-on summary -->
+     <string name="pppoe_quick_toggle_summary">打开PPPoE拨号</string>
+ 
+     <string name="pppoe_connecting">PPPoE 连接中...</string>
+     <string name="pppoe_connected">PPPoE 已连接</string>
+     <string name="pppoe_disconnecting">PPPoE 断开中...</string>
+     <string name="pppoe_disconnected">PPPoE 已断开</string>
+ 
+     <!-- Used in the 1st-level settings screen to go to the 2nd-level settings screen -->
+     <string name="pppoe_settings">PPPoE 设置</string>
+ 
+     <string name="pppoe_connect_eth_first">首先请连接以太网</string>
+     <string name="pppoe_connect_wifi_first">首先请连接WIFI</string>
+     <string name="pppoe_invalid_account">无效账户</string>
+ 
+     <string name="pppoe_settings_summary">建立 &amp; 管理 PPPoE 连接</string>
+ 
+     <string name="hello">Hello World!</string>
+     <string name="pppoe_name">pppoe</string>
+       
+     <string name="pppoe_accounts_settings">PPPoE 账户设置</string>
+     <string name="pppoe_accounts_settings_summary">PPPoE 账户管理</string>    
+     <string name="pppoe_accounts_menu_new">新账户</string>
+     <string name="pppoe_accounts_menu_restore">重置为默认</string>
+     <string name="pppoe_accounts_menu_delete">删除账户</string>
+     <string name="pppoe_accounts_menu_save">保存账户</string>
+     <string name="pppoe_accounts_menu_cancel">取消</string>
+     <string name="pppoe_accounts_editor">pppoe 账户编辑</string>
+     <string name="pppoe_accounts_name">账户名</string>
+     <string name="pppoe_accounts_user">用户名</string>
+     <string name="pppoe_accounts_dns1">dns1</string>
+     <string name="pppoe_accounts_dns2">dns2</string>          
+     <string name="pppoe_accounts_password">密码</string>
+     <string name="pppoe_accounts_edit">pppoe 账户编辑</string>
+     <string name="pppoe_accounts_error_name_empty">账户名是空的</string>
+     <string name="pppoe_accounts_error_user_empty">用户名是空的</string>
+     <string name="pppoe_accounts_error_dns1_empty">dns1 是空的</string>
+     <string name="pppoe_accounts_error_password_empty">密码是空的</string>
+     <string name="pppoe_accounts_error_title">注意</string>
+     <string name="untitled_pppoe_account">无效的账户</string>
+     <string name="restore_default_pppoe_accounts">恢复为默认</string>
+     <string name="restore_default_pppoe_accounts_completed">恢复完成</string>
+     <string name="pppoe_accounts_not_set">(未设置)</string>
+     <string name="pppoe_add_new_pppoe">添加 PPPoE 账户</string>
+     <string name="pppoe_del_selected_pppoe">删除 PPPoE 账户</string>    
+     <string name="pppoe_accounts">账户</string>
 </resources>

@@ -1459,4 +1459,15 @@
         <item>DHCP</item>
     </string-array>
 
+    <!-- pppoe --> 
+    <string-array name="entries_pppoe_phy_iface" translatable="false">
+        <item>Ethernet</item>
+        <!--item>WiFi</item-->
+    </string-array>
+
+    <string-array name="entryvalues_pppoe_phy_iface" translatable="false">
+        <item>ethernet</item>
+        <!--item>wifi</item-->
+    </string-array>
+
 </resources>
