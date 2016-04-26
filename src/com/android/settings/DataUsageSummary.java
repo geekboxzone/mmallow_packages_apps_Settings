@@ -903,7 +903,7 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
         mBinding = false;
 
         int seriesColor = context.getColor(R.color.sim_noitification);
-        if (mCurrentTab != null && mCurrentTab.length() > TAB_MOBILE.length() ){
+        if (mCurrentTab != null && mCurrentTab.length() > TAB_MOBILE.length() && !TAB_ETHERNET.equals(mCurrentTab)) {
             final int slotId = Integer.parseInt(mCurrentTab.substring(TAB_MOBILE.length(),
                     mCurrentTab.length()));
             final SubscriptionInfo sir = mSubscriptionManager
