@@ -90,6 +90,9 @@ public class HdmiReceiver extends BroadcastReceiver {
 					"enable =" + String.valueOf(enable) + " scale="
 							+ String.valueOf(scale) + " resol="
 							+ String.valueOf(resol)+"resol_length=" +resol.length());*/
+            //show touches when hdmi plug event was detected
+            Settings.System.putInt(mcontext.getContentResolver(), Settings.System.SHOW_TOUCHES, 1);
+
 		}else if(action.equals(BOOT_ACTION)){
                          Log.d(TAG,"BOOT_COMPLETED");
                          preferences = context.getSharedPreferences("HdmiSettings",
