@@ -3054,4 +3054,7 @@
      <string name="pppoe_accounts">账户</string>
      <string name="battery_percentage_title">电池百分比</string>
      <string name="cabc_setting">内容适应背光</string>
+    <!-- OTG USB modes -->
+    <string name="usb_settings">Micro USB模式</string>
+    <string name="connect_to_pc">连接到PC</string>
 </resources>

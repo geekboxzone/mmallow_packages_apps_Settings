@@ -7195,4 +7195,7 @@
      <string name="str_exit">Exit</string>    
      <string name="battery_percentage_title">Battery Percentage</string>
      <string name="cabc_setting">Content Adaptive Brightness Control</string>    
+    <!-- OTG USB mode -->
+    <string name="usb_settings">Mirco USB</string>
+    <string name="connect_to_pc">Connect to PC</string>
 </resources>
