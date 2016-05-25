@@ -7193,4 +7193,7 @@
      <string name="pppoe_del_selected_pppoe">Del PPPoE Account</string>
      <string name="pppoe_accounts">Accounts</string>
      <string name="str_exit">Exit</string>    
+    <!-- OTG USB mode -->
+    <string name="usb_settings">Mirco USB</string>
+    <string name="connect_to_pc">Connect to PC</string>
 </resources>

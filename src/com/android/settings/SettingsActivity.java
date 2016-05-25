@@ -124,6 +124,7 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
+import com.android.settings.UsbSetting;
 import com.android.settings.HdmiSettings;
 import com.android.settings.ScreenshotSetting;
 
@@ -363,6 +364,7 @@ public class SettingsActivity extends Activity
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
             ScreenshotSetting.class.getName(),
+            UsbSetting.class.getName(),
             HdmiSettings.class.getName()
     };
 

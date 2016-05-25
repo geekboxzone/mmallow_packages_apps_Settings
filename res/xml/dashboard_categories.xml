@@ -163,6 +163,14 @@
                 android:fragment="com.android.settings.HdmiSettings"
                 android:icon="@drawable/ic_settings_hdmi" />
 
+        <!-- USB OTG switch -->
+        <dashboard-tile
+                android:id="@+id/usb_settings"
+                android:title="@string/usb_settings"
+                android:fragment="com.android.settings.UsbSetting"
+                android:icon="@drawable/ic_settings_usb"
+                />
+
         <dashboard-tile
             android:id="@+id/screenshot_settings"
             android:title="@string/screenshot_manager"
