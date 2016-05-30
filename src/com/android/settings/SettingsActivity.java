@@ -126,6 +126,7 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.UsbSetting;
 import com.android.settings.HdmiSettings;
+import com.android.settings.FanSettings;
 import com.android.settings.ScreenshotSetting;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -365,6 +366,7 @@ public class SettingsActivity extends Activity
             WriteSettingsDetails.class.getName(),
             ScreenshotSetting.class.getName(),
             UsbSetting.class.getName(),
+            FanSettings.class.getName(),
             HdmiSettings.class.getName()
     };
 

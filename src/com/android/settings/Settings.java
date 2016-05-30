@@ -122,4 +122,5 @@ public class Settings extends SettingsActivity {
 	
     public static class HdmiSettingsActivity extends SettingsActivity { /* empty */ }
     public static class UsbConnectSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class FanSettingsActivity extends SettingsActivity { /* empty */ }
 }
