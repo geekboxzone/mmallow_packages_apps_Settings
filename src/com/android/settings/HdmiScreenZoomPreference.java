@@ -218,8 +218,8 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 		@Override
 		protected Void doInBackground(Integer... params) {
 			// TODO Auto-generated method stub
+			int value = params[0];
 			if(mDisplayManagement != null){
-				int value = params[0];
 				if (mDisplayManagement.getDisplayNumber() == 2)
 					mDisplayManagement.setOverScan(mDisplayManagement.AUX_DISPLAY,
 								       mDisplayManagement.DISPLAY_OVERSCAN_ALL,
@@ -228,33 +228,13 @@ public class HdmiScreenZoomPreference extends SeekBarDialogPreference implements
 					mDisplayManagement.setOverScan(mDisplayManagement.MAIN_DISPLAY,
 								       mDisplayManagement.DISPLAY_OVERSCAN_ALL,
 								       value);
-			}else{			
-				try {
-					//StringBuffer strbuf = new StringBuffer("");
-					//strbuf.append(params[0]);
-					String s = String.valueOf(params[0]);
-					OutputStream output = null;
-					OutputStreamWriter outputWrite = null;
-					PrintWriter print = null;
+			}else{	
+				String s = String.valueOf(params[0]);		
+				String overscan = "overscan "+value+","+value+","+value+","+value;
+				//Log.d("xzj","---scale value= "+value+" overscan = "+overscan);
 
-					try {
-						// SystemProperties.set("sys.hdmi_screen.scale",String.valueOf(value));
-						output = new FileOutputStream(HdmiScale);
-						outputWrite = new OutputStreamWriter(output);
-						print = new PrintWriter(outputWrite);
-	                    			Log.d(TAG,"scale value="+params[0]);
-						print.print(params[0]);
-						print.flush();
-						outputWrite.close();
-						print.close();
-						output.close();
-						preferences.edit().putString("scale_set", s).commit();
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
-				} catch (IOException e) {
-					Log.e(TAG, "IO Exception");
-				}
+				SystemProperties.set("persist.sys.overscan.main",overscan);
+				preferences.edit().putString("scale_set", s).commit();
 			}
 			return null;
 
