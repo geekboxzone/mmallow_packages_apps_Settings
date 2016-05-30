@@ -7198,4 +7198,10 @@
     <!-- OTG USB mode -->
     <string name="usb_settings">Mirco USB</string>
     <string name="connect_to_pc">Connect to PC</string>
+     <!-- Fan mode -->
+     <string name="fan_settings">Cooling fan</string>
+     <string name="fan_mode_dialog_title">Set the working mode for cooling fan</string>
+     <string name="fan_always_off_title">Always Off Mode</string>
+     <string name="fan_always_on_title">Always On Mode</string>
+     <string name="fan_smartmode_title">Smart mode: detect the CPU temprerature and set automatically</string>
 </resources>
