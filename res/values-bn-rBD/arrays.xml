@@ -37,6 +37,7 @@
     <item msgid="7489864775127957179">"৫ মিনিট"</item>
     <item msgid="2314124409517439288">"১০ মিনিট"</item>
     <item msgid="6864027152847611413">"৩০ মিনিট"</item>
+    <item msgid="3149294732238283186">"কখনই নয়"</item>
   </string-array>
   <string-array name="dream_timeout_entries">
     <item msgid="3149294732238283185">"কখনই নয়"</item>
