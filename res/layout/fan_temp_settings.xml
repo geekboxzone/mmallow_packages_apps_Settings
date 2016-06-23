@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/fan_temp_dialog_selector" >
+
+    <TextView
+        android:id="@+id/temp_title"
+        android:paddingTop="@dimen/fan_temp_dialog_title_text_padding"
+	android:paddingBottom="@dimen/fan_temp_dialog_title_text_padding"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:textColor="@color/fan_temp_dialog_title_text_color"
+        android:textSize="@dimen/fan_temp_dialog_title_text_size"
+        android:background="@drawable/fan_temp_title_selector"
+        android:text="@string/fan_temp_title" />
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fan_temp_dialog_gridview_margin"
+        android:layout_marginLeft="@dimen/fan_temp_dialog_gridview_margin"
+        android:layout_marginRight="@dimen/fan_temp_dialog_gridview_margin"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:layout_below="@id/temp_title"
+        android:listSelector="@color/fan_temp_dialog_gridview_list_selector_color"
+        android:layout_gravity="center_horizontal" />
+
+</RelativeLayout>

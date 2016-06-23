@@ -1475,4 +1475,26 @@
         <!--item>wifi</item-->
     </string-array>
 
+   <string-array name="fan_modelist" >
+	<item>Always Off Mode</item>
+        <item>Always On Mode</item>
+        <item>Smart Mode</item>
+   </string-array>
+   <string-array name="fan_modelist_values" >
+	    <item>0</item>
+		<item>1</item>
+	    <item>2</item>
+   </string-array>
+
+   <integer-array name="fan_templist" >
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+   </integer-array>
 </resources>

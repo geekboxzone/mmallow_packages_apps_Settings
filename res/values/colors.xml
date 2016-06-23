@@ -101,5 +101,11 @@
 
     <!-- Accent color that matches the settings launcher icon -->
     <color name="icon_accent">#ffabffec</color>
-
+    <!-- Cooling Fan -->
+    <color name="fan_mode_list_text_color">#ff000000</color>
+    <color name="fan_temp_dialog_background">#ffffffff</color>
+    <color name="fan_temp_dialog_title_background">#ff6699cc</color>
+    <color name="fan_temp_dialog_title_text_color">#ff000000</color>
+    <color name="fan_temp_dialog_gridview_child_text_color">#ff000000</color>
+    <color name="fan_temp_dialog_gridview_list_selector_color">#ffcfcfcf</color>
 </resources>
