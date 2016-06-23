@@ -55,6 +55,9 @@ import java.io.PrintWriter;
 import android.util.Log;
 import android.hardware.usb.UsbManager;
 import java.util.List;
+import android.os.UserManager;
+import android.hardware.usb.UsbManager;
+import android.os.SystemProperties;
 
 public class UsbSetting extends SettingsPreferenceFragment implements
     Preference.OnPreferenceChangeListener {
@@ -68,7 +71,11 @@ public class UsbSetting extends SettingsPreferenceFragment implements
     private Handler mHandler;
     private static final String KEY_CONNECT_TO_PC = "connect_to_pc";
     private static final String SYS_FILE = "/sys/bus/platform/drivers/usb20_otg/force_usb_mode";
+    private static final String USB_MODE_PROPERTY="persist.sys.usb.mode";
+    private static final String DEFAULT_MODE="2";
 
+	private static UsbManager mUsbManager;
+	private static Context mContext;
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -77,6 +84,17 @@ public class UsbSetting extends SettingsPreferenceFragment implements
             } 
         }
     };
+
+	public static class InitUsbReceiver extends BroadcastReceiver{
+         @Override
+			 public void onReceive(Context context, Intent intent) {
+				 mContext=context;
+				 String mode=SystemProperties.get(USB_MODE_PROPERTY, DEFAULT_MODE);
+	             File mFile=new File(SYS_FILE);
+                 Write2File(mFile, mode);
+		    }
+
+	}
 
 	@Override
 	protected int getMetricsCategory() {
@@ -115,6 +133,7 @@ public class UsbSetting extends SettingsPreferenceFragment implements
                 }
             }
         };
+		mContext=getActivity();
     }
 
     public String ReadFromFile(File file) {
@@ -132,11 +151,8 @@ public class UsbSetting extends SettingsPreferenceFragment implements
 			 
         return null;
     }
-	
-    public void Write2File(File file,String mode) {
-        Log.d(TAG,"Write2File,write mode = "+mode);
+    public static void Write2File(File file,String mode) {
         if((file == null) || (!file.exists()) || (mode == null)) return ;
-
         try {
             FileOutputStream fout = new FileOutputStream(file);
             PrintWriter pWriter = new PrintWriter(fout);
@@ -148,6 +164,9 @@ public class UsbSetting extends SettingsPreferenceFragment implements
         	Log.d(TAG,"write error:"+re);
         	return;
         }
+	   SystemProperties.set(USB_MODE_PROPERTY,mode);
+       mUsbManager = mContext.getSystemService(UsbManager.class);
+	   mUsbManager.setUsbDataUnlocked(true);
     }
 
     @Override
@@ -241,4 +260,5 @@ public class UsbSetting extends SettingsPreferenceFragment implements
             mHandler.sendMessage(msg);
         }
     }
+
 }
