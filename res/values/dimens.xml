@@ -256,4 +256,14 @@
 
     <dimen name="shortcut_size">40dp</dimen>
     <dimen name="badge_size">10dp</dimen>
+
+   <!-- Cooling Fan -->
+   <dimen  name="fan_temp_dialog_shape_radius">10dp</dimen>
+   <dimen  name="fan_temp_dialog_gridview_child_min_height">100dp</dimen>
+   <dimen  name="fan_temp_dialog_gridview_child_min_width">100dp</dimen>
+   <dimen  name="fan_temp_dialog_gridview_child_text_size">20sp</dimen>
+   <dimen  name="fan_temp_dialog_gridview_margin">15dp</dimen>
+   <dimen  name="fan_temp_dialog_title_text_padding">15dp</dimen>
+   <dimen  name="fan_temp_dialog_title_text_size">20sp</dimen>
+   <dimen  name="fan_mode_list_margin">25dp</dimen>
 </resources>

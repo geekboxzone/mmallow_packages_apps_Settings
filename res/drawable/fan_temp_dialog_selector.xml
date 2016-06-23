@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+       android:shape="rectangle" >
+<solid android:color="@color/fan_temp_dialog_background" />
+<corners
+       android:bottomLeftRadius="@dimen/fan_temp_dialog_shape_radius"
+       android:bottomRightRadius="@dimen/fan_temp_dialog_shape_radius"
+       android:topLeftRadius="@dimen/fan_temp_dialog_shape_radius"
+       android:topRightRadius="@dimen/fan_temp_dialog_shape_radius" />
+</shape>
