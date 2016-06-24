@@ -1495,4 +1495,12 @@
         <item>75</item>
         <item>80</item>
    </integer-array>
+   <string-array name="led_list" >
+        <item>red</item>
+        <item>blue</item>
+   </string-array>
+  <string-array name="led_title" >
+        <item>Red Led Trigger Mode</item>
+        <item>Blue Led Trigger Mode</item>
+  </string-array>
 </resources>

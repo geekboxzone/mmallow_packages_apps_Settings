@@ -266,4 +266,18 @@
    <dimen  name="fan_temp_dialog_title_text_padding">15dp</dimen>
    <dimen  name="fan_temp_dialog_title_text_size">20sp</dimen>
    <dimen  name="fan_mode_list_margin">25dp</dimen>
+
+   <!-- Led Trigger -->
+   <dimen  name="led_trigger_dialog_shape_radius">10dp</dimen>
+   <dimen  name="led_trigger_list_img_margin">5dp</dimen>
+   <dimen  name="led_trigger_list_img_padding_left">5dp</dimen>
+   <dimen  name="led_trigger_list_text_padding_left">10dp</dimen>
+   <dimen  name="led_trigger_list_text_size">20sp</dimen>
+   <dimen  name="led_trigger_list_min_height">60dp</dimen>
+   <dimen  name="led_trigger_dialog_title_text_padding">15dp</dimen>
+   <dimen  name="led_trigger_dialog_title_text_size">20sp</dimen>
+   <dimen  name="led_trigger_list_margin">25dp</dimen>
+   <dimen  name="led_trigger_list_padding_left">20dp</dimen>
+   <dimen  name="led_info_list_img_margin">25dp</dimen>
+   <dimen  name="led_info_list_img_padding_left">5dp</dimen>
 </resources>

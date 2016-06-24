@@ -7199,4 +7199,6 @@
      <!-- Fan mode -->
      <string name="fan_settings">Cooling fan</string>
      <string name="fan_temp_title">Detect CPU temprerature(°C) and set automatically</string>
+	 <!--Led trigger -->
+     <string name="led_settings">Leds trigger</string>
 </resources>

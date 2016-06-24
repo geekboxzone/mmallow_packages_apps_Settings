@@ -108,4 +108,13 @@
     <color name="fan_temp_dialog_title_text_color">#ff000000</color>
     <color name="fan_temp_dialog_gridview_child_text_color">#ff000000</color>
     <color name="fan_temp_dialog_gridview_list_selector_color">#ffcfcfcf</color>
+
+	<!-- Led Trigger -->
+	<color name="led_info_list_text_color">#ff000000</color>
+	<color name="led_trigger_dialog_background">#ffffffff</color>
+	<color name="led_trigger_dialog_title_background">#ff6699cc</color>
+	<color name="led_trigger_dialog_title_text_color">#ff000000</color>
+	<color name="led_trigger_list_selector_color">#ffcfcfcf</color>
+	<color name="led_info_list_text_color">#ff000000</color>
+	<color name="led_trigger_list_text_color">#ff000000</color>
 </resources>
