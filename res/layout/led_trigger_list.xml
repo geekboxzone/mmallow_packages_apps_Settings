@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/led_trigger_dialog_selector" >
+
+    <TextView
+        android:id="@+id/titleview"
+        android:paddingTop="@dimen/led_trigger_dialog_title_text_padding"
+	    android:paddingBottom="@dimen/led_trigger_dialog_title_text_padding"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:textColor="@color/led_trigger_dialog_title_text_color"
+        android:textSize="@dimen/led_trigger_dialog_title_text_size"
+        android:background="@drawable/led_trigger_title_selector" />
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	    android:layout_marginTop="@dimen/led_trigger_list_margin"
+	    android:layout_marginBottom="@dimen/led_trigger_list_margin"
+        android:layout_marginLeft="@dimen/led_trigger_list_margin"
+        android:layout_marginRight="@dimen/led_trigger_list_margin"
+        android:listSelector="@color/led_trigger_list_selector_color"
+        android:layout_below="@id/titleview" />
+</RelativeLayout>
