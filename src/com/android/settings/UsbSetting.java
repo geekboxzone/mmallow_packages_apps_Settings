@@ -165,8 +165,8 @@ public class UsbSetting extends SettingsPreferenceFragment implements
         	return;
         }
 	   SystemProperties.set(USB_MODE_PROPERTY,mode);
-       mUsbManager = mContext.getSystemService(UsbManager.class);
-	   mUsbManager.setUsbDataUnlocked(true);
+      // mUsbManager = mContext.getSystemService(UsbManager.class);
+	  // mUsbManager.setUsbDataUnlocked(true);
     }
 
     @Override
