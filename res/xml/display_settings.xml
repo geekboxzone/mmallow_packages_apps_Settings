@@ -54,8 +54,8 @@
                 android:title="@string/screen_timeout"
                 android:summary="@string/screen_timeout_summary"
                 android:persistent="false"
-                android:entries="@array/screen_timeout_entries"
-                android:entryValues="@array/screen_timeout_values" />
+                android:entries="@array/dream_timeout_entries"
+                android:entryValues="@array/dream_timeout_values" />
 
         <SwitchPreference
                 android:key="camera_gesture"
