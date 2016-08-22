@@ -20,10 +20,12 @@
         settings:keywords="@string/keywords_battery">
 
         <com.android.settings.fuelgauge.BatteryHistoryPreference
-            android:key="battery_history" />
-
+            android:key="battery_history" />		
         <PreferenceCategory
             android:key="app_list"
             android:title="@string/power_usage_list_summary" />
+		<CheckBoxPreference
+			android:key="battery_percentage"
+			android:title="@string/battery_percentage_title"/>
 
 </PreferenceScreen>

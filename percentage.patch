@@ -1,0 +1,140 @@
+commit 5d9312e047ddb5bb9005109ab7381da5e17bd07e
+Author: ljh <ljh@rock-chips.com>
+Date:   Wed Jan 20 09:40:47 2016 +0800
+
+    notification bar displays the battery percentage
+    
+    Change-Id: I39601486a12e4884fce89dc2e058d0df5171907a
+
+diff --git a/res/values-zh-rCN/strings.xml b/res/values-zh-rCN/strings.xml
+index 9524d24..d32c2b0 100644
+--- a/res/values-zh-rCN/strings.xml
++++ b/res/values-zh-rCN/strings.xml
+@@ -2900,4 +2900,6 @@
+   </string-array>
+     <string name="picture_color_mode" msgid="4560755008730283695">"图片颜色模式"</string>
+     <string name="picture_color_mode_desc" msgid="1141891467675548590">"使用 sRGB"</string>
++
++	<string name="battery_percentage_title">电池百分比</string>
+ </resources>
+diff --git a/res/values/strings.xml b/res/values/strings.xml
+index 5e847bd..9136410 100644
+--- a/res/values/strings.xml
++++ b/res/values/strings.xml
+@@ -7040,4 +7040,6 @@
+ 
+     <!-- Description of feature to change color setting for the display [CHAR LIMIT=NONE] -->
+     <string name="picture_color_mode_desc">Use sRGB</string>
++
++	<string name="battery_percentage_title">Battery Percentage</string>
+ </resources>
+diff --git a/res/xml/power_usage_summary.xml b/res/xml/power_usage_summary.xml
+index 3f39d47..6d6c088 100644
+--- a/res/xml/power_usage_summary.xml
++++ b/res/xml/power_usage_summary.xml
+@@ -20,10 +20,12 @@
+         settings:keywords="@string/keywords_battery">
+ 
+         <com.android.settings.fuelgauge.BatteryHistoryPreference
+-            android:key="battery_history" />
+-
++            android:key="battery_history" />		
+         <PreferenceCategory
+             android:key="app_list"
+             android:title="@string/power_usage_list_summary" />
++		<CheckBoxPreference
++			android:key="battery_percentage"
++			android:title="@string/battery_percentage_title"/>
+ 
+ </PreferenceScreen>
+diff --git a/src/com/android/settings/fuelgauge/PowerUsageSummary.java b/src/com/android/settings/fuelgauge/PowerUsageSummary.java
+index 445896d..e84c7a1 100644
+--- a/src/com/android/settings/fuelgauge/PowerUsageSummary.java
++++ b/src/com/android/settings/fuelgauge/PowerUsageSummary.java
+@@ -35,6 +35,7 @@ import android.view.Menu;
+ import android.view.MenuInflater;
+ import android.view.MenuItem;
+ 
++import android.content.Intent;
+ import com.android.internal.logging.MetricsLogger;
+ import com.android.internal.os.BatterySipper;
+ import com.android.internal.os.BatterySipper.DrainType;
+@@ -50,6 +51,12 @@ import java.util.Collections;
+ import java.util.Comparator;
+ import java.util.List;
+ 
++import android.os.BatteryManager;
++import android.os.UserHandle;
++import android.preference.CheckBoxPreference;
++import android.provider.Settings;
++import android.util.Log;
++
+ /**
+  * Displays a list of apps and subsystems that consume power, ordered by how much power was
+  * consumed since the last time it was unplugged.
+@@ -65,6 +72,8 @@ public class PowerUsageSummary extends PowerUsageBase {
+     private static final String KEY_APP_LIST = "app_list";
+     private static final String KEY_BATTERY_HISTORY = "battery_history";
+ 
++	private static final String KEY_BATTERY_PERCENTAGE = "battery_percentage";
++
+     private static final int MENU_STATS_TYPE = Menu.FIRST;
+     private static final int MENU_BATTERY_SAVER = Menu.FIRST + 2;
+     private static final int MENU_HIGH_POWER_APPS = Menu.FIRST + 3;
+@@ -80,6 +89,8 @@ public class PowerUsageSummary extends PowerUsageBase {
+     private static final int MIN_AVERAGE_POWER_THRESHOLD_MILLI_AMP = 10;
+     private static final int SECONDS_IN_HOUR = 60 * 60;
+ 
++	private CheckBoxPreference mBatteryPercentagePref;
++
+     @Override
+     public void onCreate(Bundle icicle) {
+         super.onCreate(icicle);
+@@ -87,6 +98,7 @@ public class PowerUsageSummary extends PowerUsageBase {
+         addPreferencesFromResource(R.xml.power_usage_summary);
+         mHistPref = (BatteryHistoryPreference) findPreference(KEY_BATTERY_HISTORY);
+         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
++		mBatteryPercentagePref = (CheckBoxPreference) findPreference(KEY_BATTERY_PERCENTAGE);
+     }
+ 
+     @Override
+@@ -117,14 +129,24 @@ public class PowerUsageSummary extends PowerUsageBase {
+ 
+     @Override
+     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+-        if (!(preference instanceof PowerGaugePreference)) {
++		if (mBatteryPercentagePref == preference) {
++            int state = mBatteryPercentagePref.isChecked() ? 1 : 0;
++            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.BATTERY_PERCENTAGE, state);
++            Log.d(TAG, "sendBroadcast SHOW_BATTERY_PERCENTAGE = " + state);
++            Intent intent = new Intent(BatteryManager.ACTION_SHOW_BATTERY_PERCENTAGE);
++            intent.putExtra("state", state);
++            getActivity().sendBroadcastAsUser(intent, UserHandle.ALL);
++			return super.onPreferenceTreeClick(preferenceScreen, preference);
++		}        
++		if (!(preference instanceof PowerGaugePreference)) {
+             return false;
+-        }
++        } 
+         PowerGaugePreference pgp = (PowerGaugePreference) preference;
+         BatteryEntry entry = pgp.getInfo();
+         PowerUsageDetail.startBatteryDetailPage((SettingsActivity) getActivity(), mStatsHelper,
+                 mStatsType, entry, true);
+         return super.onPreferenceTreeClick(preferenceScreen, preference);
++		
+     }
+ 
+     @Override
+@@ -286,6 +308,12 @@ public class PowerUsageSummary extends PowerUsageBase {
+         mAppListGroup.setOrderingAsAdded(false);
+         boolean addedSome = false;
+ 
++		final boolean enable = Settings.Secure.getInt(getActivity().getContentResolver(),
++                Settings.Secure.BATTERY_PERCENTAGE, 0) != 0;
++        mBatteryPercentagePref.setChecked(enable);
++        mBatteryPercentagePref.setOrder(-3);
++        //mAppListGroup.addPreference(mBatteryPercentagePref);
++
+         final PowerProfile powerProfile = mStatsHelper.getPowerProfile();
+         final BatteryStats stats = mStatsHelper.getStats();
+         final double averagePower = powerProfile.getAveragePower(PowerProfile.POWER_SCREEN_FULL);

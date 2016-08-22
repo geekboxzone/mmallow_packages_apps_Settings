@@ -35,6 +35,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import android.content.Intent;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatterySipper.DrainType;
@@ -49,6 +50,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import android.os.BatteryManager;
+import android.os.UserHandle;
+import android.preference.CheckBoxPreference;
+import android.provider.Settings;
+import android.util.Log;
 
 /**
  * Displays a list of apps and subsystems that consume power, ordered by how much power was
@@ -65,6 +72,8 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final String KEY_APP_LIST = "app_list";
     private static final String KEY_BATTERY_HISTORY = "battery_history";
 
+	private static final String KEY_BATTERY_PERCENTAGE = "battery_percentage";
+
     private static final int MENU_STATS_TYPE = Menu.FIRST;
     private static final int MENU_BATTERY_SAVER = Menu.FIRST + 2;
     private static final int MENU_HIGH_POWER_APPS = Menu.FIRST + 3;
@@ -80,6 +89,8 @@ public class PowerUsageSummary extends PowerUsageBase {
     private static final int MIN_AVERAGE_POWER_THRESHOLD_MILLI_AMP = 10;
     private static final int SECONDS_IN_HOUR = 60 * 60;
 
+	private CheckBoxPreference mBatteryPercentagePref;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -87,6 +98,7 @@ public class PowerUsageSummary extends PowerUsageBase {
         addPreferencesFromResource(R.xml.power_usage_summary);
         mHistPref = (BatteryHistoryPreference) findPreference(KEY_BATTERY_HISTORY);
         mAppListGroup = (PreferenceGroup) findPreference(KEY_APP_LIST);
+		mBatteryPercentagePref = (CheckBoxPreference) findPreference(KEY_BATTERY_PERCENTAGE);
     }
 
     @Override
@@ -117,14 +129,24 @@ public class PowerUsageSummary extends PowerUsageBase {
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (!(preference instanceof PowerGaugePreference)) {
+		if (mBatteryPercentagePref == preference) {
+            int state = mBatteryPercentagePref.isChecked() ? 1 : 0;
+            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.BATTERY_PERCENTAGE, state);
+            Log.d(TAG, "sendBroadcast SHOW_BATTERY_PERCENTAGE = " + state);
+            Intent intent = new Intent(BatteryManager.ACTION_SHOW_BATTERY_PERCENTAGE);
+            intent.putExtra("state", state);
+            getActivity().sendBroadcastAsUser(intent, UserHandle.ALL);
+			return super.onPreferenceTreeClick(preferenceScreen, preference);
+		}        
+		if (!(preference instanceof PowerGaugePreference)) {
             return false;
-        }
+        } 
         PowerGaugePreference pgp = (PowerGaugePreference) preference;
         BatteryEntry entry = pgp.getInfo();
         PowerUsageDetail.startBatteryDetailPage((SettingsActivity) getActivity(), mStatsHelper,
                 mStatsType, entry, true);
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+		
     }
 
     @Override
@@ -285,6 +307,12 @@ public class PowerUsageSummary extends PowerUsageBase {
         mAppListGroup.removeAll();
         mAppListGroup.setOrderingAsAdded(false);
         boolean addedSome = false;
+
+		final boolean enable = Settings.Secure.getInt(getActivity().getContentResolver(),
+                Settings.Secure.BATTERY_PERCENTAGE, 0) != 0;
+        mBatteryPercentagePref.setChecked(enable);
+        mBatteryPercentagePref.setOrder(-3);
+        //mAppListGroup.addPreference(mBatteryPercentagePref);
 
         final PowerProfile powerProfile = mStatsHelper.getPowerProfile();
         final BatteryStats stats = mStatsHelper.getStats();
