@@ -7193,6 +7193,6 @@
      <string name="pppoe_del_selected_pppoe">Del PPPoE Account</string>
      <string name="pppoe_accounts">Accounts</string>
      <string name="str_exit">Exit</string>    
-
-	 <string name="battery_percentage_title">Battery Percentage</string>
+     <string name="battery_percentage_title">Battery Percentage</string>
+     <string name="cabc_setting">Content Adaptive Brightness Control</string>    
 </resources>

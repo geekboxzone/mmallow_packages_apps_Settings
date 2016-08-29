@@ -3052,5 +3052,6 @@
      <string name="pppoe_add_new_pppoe">添加 PPPoE 账户</string>
      <string name="pppoe_del_selected_pppoe">删除 PPPoE 账户</string>    
      <string name="pppoe_accounts">账户</string>
-	 <string name="battery_percentage_title">电池百分比</string>
+     <string name="battery_percentage_title">电池百分比</string>
+     <string name="cabc_setting">内容适应背光</string>
 </resources>

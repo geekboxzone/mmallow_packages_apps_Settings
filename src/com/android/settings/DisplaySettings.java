@@ -39,6 +39,8 @@ import android.app.UiModeManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.hardware.Sensor;
@@ -60,6 +62,11 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener, Indexable {
     private static final String TAG = "DisplaySettings";
@@ -79,7 +86,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_CAMERA_GESTURE = "camera_gesture";
     private static final String KEY_CAMERA_DOUBLE_TAP_POWER_GESTURE
             = "camera_double_tap_power_gesture";
-
+    private static final String KEY_CABC = "cabc";
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
     private WarnedListPreference mFontSizePref;
@@ -95,6 +102,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
+    private SwitchPreference mCABCPreference;
 
     @Override
     protected int getMetricsCategory() {
@@ -135,6 +143,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             removePreference(KEY_AUTO_BRIGHTNESS);
         }
 
+        mCABCPreference=(SwitchPreference) findPreference(KEY_CABC);
+        mCABCPreference.setOnPreferenceChangeListener(this);
+        if (!SystemProperties.get("ro.target.product").equals("tablet")) {
+            removePreference(KEY_CABC);
+        }
         if (isLiftToWakeAvailable(activity)) {
             mLiftToWakePreference = (SwitchPreference) findPreference(KEY_LIFT_TO_WAKE);
             mLiftToWakePreference.setOnPreferenceChangeListener(this);
@@ -497,8 +510,22 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist night mode setting", e);
             }
         }
+        if(preference==mCABCPreference){
+          boolean value = (Boolean) objValue;
+          setCABC(value);
+          //SharedPreferences CABCPreference=this.getActivity().getSharedPreferences("CABC", Context.MODE_PRIVATE);
+          //CABCPreference.edit().putBoolean("cabc", value).commit();
+        }
         return true;
     }
+
+    private void setCABC(boolean isOpen){
+    	SystemProperties.set("persist.sys.cabc_status",isOpen?"1":"0");
+    	Intent intent=new Intent();
+    	intent.setAction("android.intent.action.CABC_CHANGE");
+    	intent.putExtra("cabc_change", isOpen);
+    	this.getActivity().sendBroadcast(intent);
+    }    
 
     @Override
     public boolean onPreferenceClick(Preference preference) {

@@ -2684,6 +2684,13 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
        </receiver>
+       
+        <receiver android:name="CABCReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.CABC_CHANGE" />
+            </intent-filter>
+       </receiver>
 
     </application>
 </manifest>
