@@ -145,7 +145,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mCABCPreference=(SwitchPreference) findPreference(KEY_CABC);
         mCABCPreference.setOnPreferenceChangeListener(this);
-        if (!SystemProperties.get("ro.target.product").equals("tablet")) {
+        if (!SystemProperties.get("ro.target.product").equals("tablet")||!SystemProperties.get("ro.board.platform").equals("rk3399")) {
             removePreference(KEY_CABC);
         }
         if (isLiftToWakeAvailable(activity)) {
